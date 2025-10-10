@@ -44,7 +44,6 @@ The following can also be configured as part of the role but require some option
 * Specify the port and other select sshd\_config values
 * Add a public key(s) to the current user's profile
 
-
 ## Requirements
 
 none
@@ -131,6 +130,7 @@ Only install client components of Win32-OpenSSH
             roles:
             - role: jborean93.win_openssh
               openssh_windows_setup_service: False
+
 
 
 ## License
