@@ -3,8 +3,7 @@
 [![Galaxy Role](https://img.shields.io/badge/galaxy-apps_openssh_windows-purple?style=flat)](https://galaxy.ansible.com/lotusnoir/apps_openssh_windows)
 [![Version](https://img.shields.io/github/release/lotusnoir/ansible-apps_openssh_windows.svg)](https://github.com/lotusnoir/ansible-apps_openssh_windows/releases/latest)
 [![GitHub repo size](https://img.shields.io/github/repo-size/lotusnoir/ansible-apps_openssh_windows?color=orange&style=flat)](https://galaxy.ansible.com/lotusnoir/apps_openssh_windows)
-[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/lotusnoir/apps_openssh_windows)
-[![Ansible Quality Score](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/lotusnoir/apps_openssh_windows)
+[![downloads](https://img.shields.io/ansible/role/d/lotusnoir/apps_openssh_windows)](https://galaxy.ansible.com/lotusnoir/apps_openssh_windows)
 [![License](https://img.shields.io/badge/license-Apache--2.0-brightgreen?style=flat)](https://opensource.org/licenses/Apache-2.0)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
