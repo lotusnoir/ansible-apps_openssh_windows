@@ -1,6 +1,6 @@
 ---
 - name: Copy OpenSSH zip from {{ openssh_windows_zip_remote_src | ternary("local path", "Ansible controller") }}
-  ansible.windows.in_copy:
+  ansible.windows.win_copy:
     src: '{{ openssh_windows_zip_file }}'
     dest: '{{ openssh_windows_temp_path }}\OpenSSH-Win.zip'
     remote_src: '{{ openssh_windows_zip_remote_src }}'
