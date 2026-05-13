@@ -45,12 +45,14 @@
   ansible.builtin.set_fact:
     pri_openssh_admin_name: '{{ pri_openssh_admin_name_raw.stdout | trim }}'
 
-- name: Set the admin_authorized_keys setting
-  win_sshd_config:
-    path: '{{ openssh_windows_install_path }}\sshd_config_default'
-    match_name: Group {{ pri_openssh_admin_name }}
-    name: AuthorizedKeysFile
-    value: '{{ (openssh_windows_shared_admin_key | bool) | ternary("__PROGRAMDATA__/ssh/administrators_authorized_keys", omit) }}'
+- name: Ensure admin SSH block exists
+  community.windows.win_lineinfile:
+    path: "{{ openssh_windows_install_path }}\\sshd_config_default"
+    regexp: '^AuthorizedKeysFile'
+    line: >-
+      {{ (openssh_windows_shared_admin_key | bool)
+         | ternary('AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys', omit) }}
+  when: openssh_windows_shared_admin_key | bool
   ignore_errors: '{{ ansible_check_mode }}'
 
 - name: Check if the server config directory already exists

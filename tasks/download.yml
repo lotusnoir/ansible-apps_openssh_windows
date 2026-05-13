@@ -29,8 +29,7 @@
     - name: Build download link from latest version
       ansible.builtin.set_fact:
         openssh_windows_url: >-
-          https://github.com/PowerShell/Win32-OpenSSH/releases/download/
-          {{ openssh_windows_version }}/OpenSSH-Win{{ openssh_windows_architecture }}.zip
+          https://github.com/PowerShell/Win32-OpenSSH/releases/download/{{ openssh_windows_version }}/OpenSSH-Win{{ openssh_windows_architecture }}.zip
 
 - name: Download the Win32-OpenSSH zip
   ansible.windows.win_get_url:
@@ -44,7 +43,7 @@
     state: directory
 
 - name: Extract the Win32-OpenSSH zip to a temp folder
-  ansible.windows.win_unzip:
+  community.windows.win_unzip:
     src: '{{ openssh_windows_temp_path }}\OpenSSH-Win.zip'
     dest: '{{ openssh_windows_temp_path }}\OpenSSH'
     delete_archive: true
