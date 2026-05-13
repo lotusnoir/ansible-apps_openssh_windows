@@ -2,11 +2,11 @@
 - name: Validate input facts
   ansible.builtin.assert:
     that:
-      - opt_openssh_architecture|string in ["32", "64"]
+      - openssh_windows_architecture|string in ["32", "64"]
 
 - name: Check if OpenSSH has been downloaded and extracted
   ansible.windows.win_stat:
-    path: '{{ opt_openssh_install_path }}\sshd.exe'
+    path: '{{ openssh_windows_install_path }}\sshd.exe'
   register: pri_openssh_installed
 
 - name: Download and extract the OpenSSH zip
@@ -18,7 +18,7 @@
     name: OPENSSH_HOME
     level: machine
     state: present
-    value: '{{ opt_openssh_install_path }}'
+    value: '{{ openssh_windows_install_path }}'
 
 - name: Add OPENSSH_HOME to to system PATH
   ansible.windows.win_path:
@@ -29,4 +29,4 @@
 
 - name: Setup ssh server components
   ansible.builtin.include_tasks: service.yml
-  when: opt_openssh_setup_service
+  when: openssh_windows_setup_service

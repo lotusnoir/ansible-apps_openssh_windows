@@ -9,11 +9,11 @@
 
 - name: "Install"
   when:
-    - opt_openssh_url is not defined
-    - opt_openssh_zip_file is not defined
+    - openssh_windows_url is not defined
+    - openssh_windows_zip_file is not defined
   block:
     - name: "Install"
-      when: opt_openssh_version == 'latest'
+      when: openssh_windows_version == 'latest'
       block:
         - name: Get latest release version
           ansible.windows.win_uri:
@@ -24,11 +24,13 @@
 
         - name: Extract the latest version from the latest release url
           ansible.builtin.set_fact:
-            opt_openssh_version: '{{ pri_openssh_latest_redirect.response_uri.split("/")[-1] }}'
+            openssh_windows_version: '{{ pri_openssh_latest_redirect.response_uri.split("/")[-1] }}'
 
     - name: Build download link from latest version
       ansible.builtin.set_fact:
-        opt_openssh_url: https://github.com/PowerShell/Win32-OpenSSH/releases/download/{{ opt_openssh_version }}/OpenSSH-Win{{ opt_openssh_architecture }}.zip
+        openssh_windows_url: >-
+          https://github.com/PowerShell/Win32-OpenSSH/releases/download/
+          {{ openssh_windows_version }}/OpenSSH-Win{{ openssh_windows_architecture }}.zip
 
 - name: Download the Win32-OpenSSH zip
   ansible.windows.win_get_url:
